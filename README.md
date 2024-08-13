@@ -7,13 +7,13 @@ This package provides a configurable password policy checker that allows you to 
 You can install this package using Poetry:
 
 ```
-poetry add password-policy
+poetry add passvalidate
 ```
 
 ## Usage
 
 ```python
-from password_policy import PasswordPolicy
+from passvalidate import PasswordPolicy
 
 # Use default policy
 default_policy = PasswordPolicy()

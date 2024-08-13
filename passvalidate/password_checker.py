@@ -1,5 +1,5 @@
 import re
-from typing import List
+from typing import List, Tuple
 
 
 class PasswordPolicy:
@@ -21,7 +21,7 @@ class PasswordPolicy:
         self.special_chars = special_chars
         self.allow_spaces = allow_spaces
 
-    def check_password(self, password: str) -> bool:
+    def check_password(self, password: str) -> Tuple[bool, List[str]]:
         """
         Checks a password against the defined policy.
 
@@ -29,11 +29,14 @@ class PasswordPolicy:
             password (str): The password to check.
 
         Returns:
-            bool: True if the password meets the policy, False otherwise.
+            Tuple[bool, List[str]]: A tuple containing:
+                - bool: True if the password meets the policy, False otherwise.
+                - List[str]: A list of issues with the password. Empty if password is valid.
         """
-        return len(self.get_password_strength_issues(password)) == 0
+        issues = self._get_password_issues(password)
+        return (len(issues) == 0, issues)
 
-    def get_password_strength_issues(self, password: str) -> List[str]:
+    def _get_password_issues(self, password: str) -> List[str]:
         """
         Checks a password against the defined policy and returns a list of issues.
 

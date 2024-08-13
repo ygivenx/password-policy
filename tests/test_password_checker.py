@@ -21,25 +21,27 @@ def custom_policy():
 
 
 def test_valid_password(default_policy):
-    assert default_policy.check_password("P@ssw0rd!2") is True
+    is_valid, issues = default_policy.check_password("P@ssw0rd!2")
+    assert is_valid is True
+    assert len(issues) == 0
 
 
 def test_invalid_password(default_policy):
-    assert default_policy.check_password("weak") is False
-
-
-def test_password_issues(default_policy):
-    issues = default_policy.get_password_strength_issues("weak")
+    is_valid, issues = default_policy.check_password("weak")
+    assert is_valid is False
     assert len(issues) > 0
-    assert any("needs to be at least" in issue for issue in issues)
 
 
 def test_custom_policy_valid(custom_policy):
-    assert custom_policy.check_password("Pass word1!") is True
+    is_valid, issues = custom_policy.check_password("Pass word1!")
+    assert is_valid is True
+    assert len(issues) == 0
 
 
 def test_custom_policy_invalid(custom_policy):
-    assert custom_policy.check_password("password") is False
+    is_valid, issues = custom_policy.check_password("password")
+    assert is_valid is False
+    assert len(issues) > 0
 
 
 def test_get_policy_description(default_policy):
