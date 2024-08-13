@@ -1,9 +1,12 @@
 [tool.poetry]
-name = "password-policy"
+name = "passvalidate"
 version = "0.1.0"
 description = "A configurable password policy checker"
 authors = ["Rohan Singh <singhrohan@outlook.com>", "Kayan Irani <kayan.r.irani@gmail.com>"]
 readme = "README.md"
+homepage = "https://github.com/ygivenx/password-policy"
+repository = "https://github.com/ygivenx/password-policy"
+keywords = ["password", "security", "policy", "check", "auth", "authentication"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

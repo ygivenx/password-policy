@@ -1,5 +1,5 @@
 import pytest
-from password_policy import PasswordPolicy
+from passvalidate import PasswordPolicy
 
 
 @pytest.fixture
