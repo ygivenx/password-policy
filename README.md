@@ -4,10 +4,10 @@ This package provides a configurable password policy checker that allows you to 
 
 ## Installation
 
-You can install this package using Poetry:
+You can install this package using pip:
 
 ```
-poetry add passvalidate
+pip install passvalidate
 ```
 
 ## Usage
@@ -17,11 +17,11 @@ from passvalidate import PasswordPolicy
 
 # Use default policy
 default_policy = PasswordPolicy()
-result = default_policy.check_password("YourPassword123!")
+result, issues = default_policy.check_password("passworda!")
 if result:
     print(result)
 else:
-    print("Password meets all requirements")
+    print(issues)
 
 # Use custom policy
 custom_policy = PasswordPolicy(
@@ -33,11 +33,18 @@ custom_policy = PasswordPolicy(
     special_chars="!@#$%^&*",
     allow_spaces=True
 )
-result = custom_policy.check_password("Your Custom Password 1!")
+result, issues = custom_policy.check_password("Your Custom Password 1!")
 if result:
     print(result)
 else:
-    print("Password meets all custom requirements")
+    print(issues)
+
+
+result, issues = custom_policy.check_password("Your Custom Password 1)")
+if result:
+    print(result)
+else:
+    print(issues)
 
 # Get policy description
 print(custom_policy.get_policy_description())
