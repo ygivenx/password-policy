@@ -49,9 +49,12 @@ class PasswordPolicy:
         """
         issues = []
 
+        if not password:
+            issues.append('Password cannot be empty.')
+            return issues
+        
         if len(password) < self.min_length:
             issues.append(f'Password needs to be at least {self.min_length} characters long.')
-
         if not self.allow_spaces and ' ' in password:
             issues.append('Spaces are not allowed in the password.')
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "passvalidate"
-version = "0.1.2"
+version = "0.1.3"
 description = "A configurable password policy checker"
 authors = ["Rohan Singh <singhrohan@outlook.com>", "Kayan Irani <kayan.r.irani@gmail.com>"]
 readme = "README.md"

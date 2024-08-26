@@ -20,6 +20,12 @@ def custom_policy():
     )
 
 
+def test_empty_password(default_policy):
+    is_valid, issues = default_policy.check_password(None)
+    assert is_valid is False
+    assert len(issues) == 1
+
+
 def test_valid_password(default_policy):
     is_valid, issues = default_policy.check_password("P@ssw0rd!2")
     assert is_valid is True
